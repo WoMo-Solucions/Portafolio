@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WoMo Soluciónˢ | Solución</title>
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="portfolio-section">
+    <div class="container">
+      <h1 class="section-title">WoMo Soluciónˢ</h1>
+      <div class="womo-impact-container">
+        <div class="womo-impact-phrase">
+          <p><strong>Estos clientes ya no pierden tiempo.<br>¿Sigues en <span class="womo-highlight">modo manual</span>?</strong></p>
+        </div>
+        <div class="portfolio-grid" id="portfolio-container"><!-- Se llena por JS --></div>
+        <div class="womo-impact-phrase">
+          <p><strong>WoMo no hace magia.<br>Hace que lo imposible sea 
+            <span class="womo-highlight">
+              <button class="womo-impact-button" onclick="openContactPopup('Me interesa transformar mis procesos con WoMo Soluciónˢ. ')"><strong>un clic</strong></button>
+            </span>.
+          </strong></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Popup funcional -->
+  <div id="project-popup" class="popup-overlay">
+    <div class="popup-content">
+      <button class="close-popup" onclick="document.querySelector('#project-popup').classList.remove('show')">&times;</button>
+      <div id="popup-content-wrapper"></div>
+    </div>
+  </div>
+
+  <div id="app-contact"></div>
+  <div id="app-chatbot"></div>
+  <div id="app-inactivity"></div>
+  <div id="app-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="static/js/chatbot-database.js"></script>
+  <script src="static/js/scripts.js"></script>
+  <script src="static/js/app.js"></script>
+</body>
+</html>

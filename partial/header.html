@@ -1,0 +1,30 @@
+<!-- Header global con menú y selector de idioma compacto -->
+<header class="topbar">
+  <div class="topbar__left">
+    <a href="index.html" class="brand">
+      <img src="img/LogoTipo..webp" alt="WoMo Soluciónˢ" width="132" height="44" decoding="async" loading="lazy" style="height:auto;">
+    </a>
+  </div>
+
+  <nav class="main-nav" aria-label="Navegación principal">
+    <a href="index.html" data-nav="inicio" class="nav-link">Inicio</a>
+    <a href="servicios.html" data-nav="servicios" class="nav-link">Servicios</a>
+    <a href="beneficios.html" data-nav="beneficios" class="nav-link">Beneficios</a>
+    <a href="solucion.html" data-nav="solucion" class="nav-link">Solución</a>
+    <a href="impacto.html" data-nav="impacto" class="nav-link">Impacto</a>
+    <button class="nav-link nav-cta" onclick="openContactPopup()">Contacto</button>
+  </nav>
+
+  <div class="lang-mini">
+    <button class="lang-mini__btn" aria-haspopup="listbox" aria-expanded="false" title="Idioma">
+      <img src="img/flags/co.svg" alt="ES" width="18" height="18"> ES
+      <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5z"/></svg>
+    </button>
+    <ul class="lang-mini__list" role="listbox">
+      <li><a href="index_en.html"><img src="img/flags/gb.svg" alt="EN" width="16" height="16"> English</a></li>
+      <li><a href="index_pt.html"><img src="img/flags/br.svg" alt="PT" width="16" height="16"> Português</a></li>
+      <li><a href="index_de.html"><img src="img/flags/de.svg" alt="DE" width="16" height="16"> Deutsch</a></li>
+      <li><a href="index_fr.html"><img src="img/flags/fr.svg" alt="FR" width="16" height="16"> Français</a></li>
+    </ul>
+  </div>
+</header>

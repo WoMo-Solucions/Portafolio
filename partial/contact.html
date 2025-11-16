@@ -1,0 +1,22 @@
+<!-- Popup de Contacto reutilizable -->
+<div id="contact-popup" class="side-popup" aria-hidden="true" role="dialog" aria-label="Contacto WoMo">
+  <button class="close-btn" onclick="closeContactPopup()" aria-label="Cerrar">
+    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <h2 class="popup-title">¡Transformemos tu negocio!</h2>
+  <p class="contact-subtitle">Agenda tu consultoría hoy mismo y lleva tu negocio al siguiente nivel.</p>
+
+  <div class="contact-form">
+    <input type="text" id="contact-name" placeholder="Nombre" required>
+    <input type="email" id="contact-email" placeholder="Email" required>
+    <input type="tel" id="contact-celular" placeholder="Celular" required>
+    <textarea id="contact-message" placeholder="¿Cómo podemos ayudarte?" rows="2" required></textarea>
+
+    <div class="form-footer">
+      <div class="whatsapp-container" onclick="window.open('https://wa.me/573180401930','_blank')" role="button" aria-label="WhatsApp">
+        <img src="img/wp.webp" alt="WhatsApp" width="30" height="30">
+      </div>
+      <button class="submit-btn" onclick="sendContactRequest()">Enviar</button>
+    </div>
+  </div>
+</div>

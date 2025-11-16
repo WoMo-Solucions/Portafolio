@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WoMo Soluciónˢ | Servicios</title>
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main style="padding: 1.5rem 1rem; max-width: 1200px; margin: 0 auto;">
+    <h1 class="services-title">Nuestros servicios</h1>
+    <section id="services">
+      <div class="process-container">
+        <div class="process-card" onclick="openServicePopup('time')">
+          <div class="process-icon">⏱️</div>
+          <h3 style="font-size: 1.1rem; margin: 0.5rem 0;">Transformación de Tiempo</h3>
+          <p style="font-size: 0.8rem;">Convierte horas en minutos</p>
+        </div>
+        <div class="process-card" onclick="openServicePopup('workflow')">
+          <div class="process-icon">⚡</div>
+          <h3 style="font-size: 1.1rem; margin: 0.5rem 0;">Flujos Inteligentes</h3>
+          <p style="font-size: 0.8rem;">Automatización adaptativa</p>
+        </div>
+        <div class="process-card" onclick="openServicePopup('profit')">
+          <div class="process-icon">💰</div>
+          <h3 style="font-size: 1.1rem; margin: 0.5rem 0;">Impulso Rentable</h3>
+          <p style="font-size: 0.8rem;">Maximiza tus ganancias</p>
+        </div>
+        <div class="process-card" onclick="openServicePopup('analytics')">
+          <div class="process-icon">📊</div>
+          <h3 style="font-size: 1.1rem; margin: 0.5rem 0;">Análisis Predictivo</h3>
+          <p style="font-size: 0.8rem;">Anticipa tendencias</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popup de Procesos -->
+    <div id="services-popup-overlay" style="display:none;">
+      <div id="services-popup" class="centered-popup">
+        <button class="close-btn" onclick="closeServicePopup()">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <div id="services-popup-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <div id="app-contact"></div>
+  <div id="app-chatbot"></div>
+  <div id="app-inactivity"></div>
+  <div id="app-footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="static/js/chatbot-database.js"></script>
+  <script src="static/js/scripts.js"></script>
+  <script src="static/js/app.js"></script>
+</body>
+</html>
