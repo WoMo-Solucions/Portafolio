@@ -1,0 +1,13 @@
+{
+  "title": "PortiFy",
+  "hero": "Dynamic portfolio",
+  "hero_desc": "GIF controlled from settings (Supabase).",
+  "contact": "Contact",
+  "name": "Name",
+  "message": "Message",
+  "send": "Send",
+  "lang": "Language",
+  "lang_tip": "Texts update live without code duplication.",
+  "chat_title": "Chat",
+  "sent_ok": "Sent"
+}

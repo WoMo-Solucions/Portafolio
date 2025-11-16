@@ -1,0 +1,101 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PortiFy</title>
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;margin:40px;}
+    .container{max-width:920px;margin:auto}
+    .row{display:flex;gap:20px;flex-wrap:wrap}
+    .card{flex:1 1 320px;border:1px solid #ddd;border-radius:12px;padding:20px}
+    img.hero{max-width:100%;border-radius:12px}
+    #chat{position:fixed;right:20px;bottom:20px;width:320px;border:1px solid #ddd;border-radius:12px;background:#fff;padding:10px}
+    #chat h3{margin:4px 0}
+    #chatlog{height:180px;overflow:auto;border:1px solid #eee;padding:6px;border-radius:8px;margin:6px 0}
+    .msg{margin:4px 0}
+    .me{font-weight:600}
+    .bot{}
+    select{padding:6px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 data-i18n="title">PortiFy</h1>
+    <div class="row">
+      <div class="card">
+        <h3 data-i18n="hero">Portafolio dinámico</h3>
+        <img id="heroGif" class="hero" alt="hero gif"/>
+        <p data-i18n="hero_desc">GIF controlado desde configuración (Supabase).</p>
+      </div>
+      <div class="card">
+        <h3 data-i18n="contact">Contacto</h3>
+        <label data-i18n="name">Nombre</label><br/>
+        <input id="name" placeholder="Tu nombre"/><br/>
+        <label>Email</label><br/>
+        <input id="email" type="email" placeholder="tu@correo.com"/><br/>
+        <label data-i18n="message">Mensaje</label><br/>
+        <input id="message" placeholder="Cuéntanos..."/><br/>
+        <button id="btnSend" data-i18n="send">Enviar</button>
+        <pre id="out"></pre>
+      </div>
+      <div class="card">
+        <h3 data-i18n="lang">Idioma</h3>
+        <select id="langSelect">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+        </select>
+        <p data-i18n="lang_tip">Los textos cambian sin recargar y sin duplicar código.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="chat">
+    <h3 data-i18n="chat_title">Chat</h3>
+    <div id="chatlog"></div>
+    <input id="chatmsg" placeholder="Escribe..." />
+    <button id="chatsend" data-i18n="send">Enviar</button>
+  </div>
+
+  <script type="module">
+    import { $, api, setText, toast } from './js/core.js';
+    import { i18nInit, t, setLang } from './js/lang.js';
+    import { Chatbot } from './js/chatbot.js';
+
+    // i18n
+    const select = $('#langSelect');
+    await i18nInit('es');
+    select.addEventListener('change', async (e)=>{
+      await setLang(e.target.value);
+    });
+
+    // GIF dinámico
+    async function loadGif(){
+      try{
+        const r = await api('/api/gif');
+        const url = r?.gif || 'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif';
+        $('#heroGif').src = url;
+      }catch(e){
+        $('#heroGif').src = 'https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif';
+      }
+    }
+    loadGif();
+
+    // Contacto
+    $('#btnSend').addEventListener('click', async ()=>{
+      const res = await api('/api/contact', 'POST', {
+        name: $('#name').value, email: $('#email').value, message: $('#message').value
+      });
+      setText('#out', JSON.stringify(res,null,2));
+      toast(t('sent_ok'));
+    });
+
+    // Chatbot
+    const bot = new Chatbot('#chatlog', (msg)=> api('/api/chat','POST',{ message: msg, lang: select.value }).then(r=>r.reply||''));
+    $('#chatsend').addEventListener('click', ()=> bot.send($('#chatmsg').value, select.value));
+
+  </script>
+</body>
+</html>

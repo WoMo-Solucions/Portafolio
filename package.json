@@ -1,0 +1,9 @@
+
+{
+  "name": "portify",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && echo '<html><body><h1>PortiFy</h1><p>Reemplaza este stub con tu build real.</p></body></html>' > dist/index.html"
+  }
+}
